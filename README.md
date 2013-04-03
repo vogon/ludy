@@ -1,4 +1,4 @@
-luby
+ludy
 ====
 
-luby: an experrimental game thing in ruby
+ludy is a toolkit for building games as prose-like descriptions of their rules.
