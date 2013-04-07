@@ -6,7 +6,7 @@ class ReplPlayer
 	end
 
 	def tell(*args)
-		print *args
+		puts *args
 	end
 
 	private
@@ -25,7 +25,8 @@ class ReplPlayer
 			game_name = "player_#{name}"
 			# pass it to game
 			self.game.public_send(game_name, self.player, *args)
+			# suppress return
+			nil
 		end
-
 	end
 end
