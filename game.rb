@@ -11,17 +11,11 @@ class Game
 
 	def start
 		self.setup
-
-		self.game_thread = Thread.new do
-			while !self.end? do
-				sleep 1
-			end
-			puts "game over"
-		end
 	end
 
-	def wait_for_end
-		self.game_thread.join
+	# default "game over?" predicate; implementations should override it
+	def end?
+		false
 	end
 
 	private

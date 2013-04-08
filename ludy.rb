@@ -14,4 +14,10 @@ p.setup
 
 g.start
 
-p.proxy.pry({ quiet: true })
+Thread.new do
+	p.proxy.pry({ quiet: true })
+end
+
+while !g.end? do
+	sleep 1
+end
