@@ -1,10 +1,10 @@
-require './replplayer'
+require './remotereplplayer'
 
 load './guess.ld'
 
 g = GuessANumber.new
 
-p = ReplPlayer.new(g)
+p = RemoteReplPlayer.new(g, 3569)
 p.extend GuessANumberPlayer
 
 g.players[0] = p
