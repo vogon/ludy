@@ -1,20 +1,36 @@
 require './remotereplplayer'
 
-load './guess.ld'
+load './cthulhu_dice.ld'
 
-g = GuessANumber.new
+g = CthulhuDice.new
 
-p = RemoteReplPlayer.new(g, 3569)
-p.extend GuessANumberPlayer
+p0 = RemoteReplPlayer.new(g, 3569)
+p0.extend CthulhuDicePlayer
 
-g.players[0] = p
+p1 = RemoteReplPlayer.new(g, 3570)
+p1.extend CthulhuDicePlayer
 
-p.setup
+g.players = [p0, p1]
+
+p0.setup
+p1.setup
 
 g.start
 
 Thread.new do
-	result = p.run
+	begin
+		result = p0.run
+	rescue Exception => e
+		puts e
+	end
+end
+
+Thread.new do
+	begin
+		result = p1.run
+	rescue Exception => e
+		puts e
+	end
 end
 
 while !g.end? do
